@@ -13,8 +13,8 @@ set :scm, :git
 set :user, "root"
 ##set :user, 'deploy'
 set :use_sudo, false
-set :deploy_to, "/var/www/#{application}"
-##set :deploy_via, :remote_cache
+##set :deploy_to, "/var/www/#{application}"
+set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/cms"
 
 role :web, "rubynewauth.com"                          # Your HTTP server, Apache/etc
@@ -30,8 +30,11 @@ role :db,  "rubynewauth.com", :primary => true # This is where Rails migrations 
 
 # If you are using Passenger mod_rails uncomment this:
 
-after "deploy" "deploy:bundle_gems"
-after "deploy:bundle_gems", "deploy:restart"
+after :deploy, "gems:install"
+after "gems:install", "deploy:migrate"
+
+# after "deploy" "deploy:bundle_gems"
+# after "deploy:bundle_gems", "deploy:restart"
 
  # task :install do
  #    run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install"
