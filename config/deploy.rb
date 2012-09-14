@@ -18,9 +18,9 @@ set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/cms"
 set :repository_cache, "cached_copy"
 
-# role :web, "rubynewauth.com"                          # Your HTTP server, Apache/etc
-# role :app, "rubynewauth.com"                          # This may be the same as your `Web` server
-# role :db,  "rubynewauth.com", :primary => true # This is where Rails migrations will run
+role :web, "rubynewauth.com"                          # Your HTTP server, Apache/etc
+role :app, "rubynewauth.com"                          # This may be the same as your `Web` server
+role :db,  "rubynewauth.com", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:
@@ -52,9 +52,9 @@ end
   end
 end
 
-task :staging do
-  set :rails_env, 'staging'
-  role :app, "rubynewauth.com"
-  role :web, "rubynewauth.com"
-  role :db,  "rubynewauth.com", :primary => true
-end
+# task :staging do
+#   set :rails_env, 'staging'
+#   role :app, "rubynewauth.com"
+#   role :web, "rubynewauth.com"
+#   role :db,  "rubynewauth.com", :primary => true
+# end
