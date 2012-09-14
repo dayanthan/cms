@@ -1,0 +1,64 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">DotNet Department</a>
+      	<div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Members List" %></li>
+        </ul>
+      	</div>
+        <div class="nav-collapse" style ="text-align: right">
+           	<ul class="nav">
+           		<li><%= link_to "Edit Profile",  :controller =>"admin", :action => "edit" %></li> 
+           		<li><%= link_to "Show Profile",  :controller =>"admin", :action => "show" %></li> 
+           		<li><%= link_to "Log out", logout_path %></li>
+           		<li><%= link_to "Messages", :controller =>"admin", :action => "inbox"%>                
+       		</ul>
+    	</div>  
+    </div>
+  </div>
+</div>
+<% if !current_user.nil? %>   
+         <h4> Welcome <strong><%= current_user.username %>!</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Role:</strong>&nbsp;<%= current_user.role%>&nbsp;&nbsp;&nbsp; <strong>Designation:</strong>&nbsp;<%= current_user.designation%></h4>
+<% end %>
+&nbsp;&nbsp;
+&nbsp;<table class="table table-striped">
+  <tr>
+ <td><strong> Username </strong></td>
+<td> <strong>Email </strong></td>
+<td> <strong>Role </strong></td>
+<td> <strong>Designation </strong></td>
+
+  </tr>
+<% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+         <td><%= user.email %></td>
+          <td><%= user.role %></td>
+           <td><%= user.designation %></td>
+      <td>  <%= link_to "Send a Message",{:controller=>"messages",:action=>"new",
+ :user_id=>user}%>
+
+  </td>  
+</tr>
+<% end %>
+</table>
+
+
+<div  style ="text-align: center">
+
+<h1>Welcome dotnet Team</h1>
+
+<h3>What is the history of .NET? </h3>
+
+<p>.NET started as a classic Microsoft FUD operation. In the late 1990s, Microsoft had just successfully fought off a frontal assault on its market dominance by killing the Netscape Web browser with its free Internet Explorer. But Microsoft was facing a host of new challenges, including serious problems with COM, C++, DLL hell, the Web as a platform, security, and strong competition from Java, which was emerging as the go-to language for Web development.<p>
+
+<h3>Thankyou for visiting </h3>
+
+</div>

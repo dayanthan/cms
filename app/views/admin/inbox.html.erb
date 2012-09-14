@@ -1,0 +1,21 @@
+<h2>Inbox</h2>
+<table>
+  <tr>
+    <td><strong> From </td></strong>  
+    <td><strong> Subject </td></strong>
+    <td><strong> Message </td></strong>
+    <td><strong> Date </td></strong>  
+  </tr>
+  <% if !@usermessages.blank?%>		  
+    <% @usermessages.each do |us| %>
+	  <tr>
+         <td> <%=us.user.email%> </td>
+	       <td> <%= us.subject %> </td>
+    	   <td> <%= us.description %> </td>
+    	   <td> <%= us.created_at.strftime("%d/%m/%Y %I:%M %p") %> </td>
+	  </tr>					
+    <% end %>
+<% else %>
+  No Msgs
+<% end%>
+</table>

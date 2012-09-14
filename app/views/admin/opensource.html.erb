@@ -1,0 +1,63 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="users_path">Open Source Department</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Members List" %></li>
+        </ul>
+      </div>
+
+      <div class="nav-collapse" style ="text-align: right">
+            		<ul class="nav">
+         <li><%= link_to "Edit Profile",  :controller =>"admin", :action => "edit" %></li> 
+           		<li><%= link_to "Show Profile",  :controller =>"admin", :action => "show" %></li> 
+           		<li><%= link_to "Log out", logout_path %></li>                
+       		</ul>
+    </div>  
+    </div>
+  </div>
+</div>
+
+<% if !current_user.nil? %>   
+         <h4> Welcome <strong><%= current_user.username %>!</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Role:</strong>&nbsp;<%= current_user.role%>&nbsp;&nbsp;&nbsp; <strong>Designation:</strong>&nbsp;<%= current_user.designation%></h4>
+<% end %>
+<table class="table table-striped">
+  <tr>
+ <td><strong> Username </strong></td>
+<td> <strong>Email </strong></td>
+<td> <strong>Role </strong></td>
+<td> <strong>Designation </strong></td>
+
+  </tr>
+<% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+         <td><%= user.email %></td>
+          <td><%= user.role %></td>
+           <td><%= user.designation %></td>
+        
+</tr>
+<% end %>
+</table>
+
+<div  style ="text-align: center">
+
+<h1>Welcome Opensource Team</h1>
+
+<h3>What is the history of Open Source? </h3>
+
+<p>open source is a philosophy, or pragmatic methodology that promotes free redistribution and access to an end product's design and implementation details[citation needed]. Before the phrase open source became widely adopted, developers and producers used a variety of phrases to describe the concept; open source gained hold with the rise of the Internet, and the attendant need for massive retooling of the computing source code.[citation needed] Opening the source code enabled a self-enhancing diversity of production models, communication paths, and interactive communities.[1] The open-source software movement was born to describe the environment that the new copyright, licensing, domain, and consumer issues created.[citation needed]
+
+<p>
+
+<h3>Thankyou for visiting </h3>
+
+</div>
+

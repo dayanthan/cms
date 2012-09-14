@@ -1,0 +1,41 @@
+
+
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+   <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+</div>
+
+<p style="font-size:20px; text-align:center;"><b>Login</b></p>
+<div style="margin:auto; width:400px;font-size:14px; border:1px solid #000;padding:20px 0px 10px 0px;">
+
+<%= form_for @user_session, {:action => "create"} do |f| %>
+  <div style="text-align:center;">
+
+  <%#= f.error_messages%>
+   <p style="text-align:center;">
+      <%= f.label :email %><br/>
+      <%= f.text_field :email%>
+   </p>
+
+   <p style="text-align:center;">
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+   </p>
+   <p style="text-align:center;">
+       <%= f.submit "Submit"%>
+       <input type="reset" value="Reset" />
+    </p>
+</div>
+  <% end %>
+
+
+<p style="text-align:center;">You need an account?</br>
+<%= link_to 'Click here', :controller =>"users", :action =>"new" %> </p>
+
+  </div>
+
+  </div>

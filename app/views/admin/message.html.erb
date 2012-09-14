@@ -1,0 +1,9 @@
+<% if !current_user.nil? %>   
+          Welcome <strong><%= current_user.username %>!</strong>           
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Sign up", :controller =>"users", :action => "new" %> or
+          <%= link_to "log in", :controller =>"user_sessions", :action => "new" %>.
+        <% end %>
+        
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

@@ -1,0 +1,26 @@
+<% if !current_user.nil? %>   
+          Welcome <strong><%= current_user.username %>!</strong>           
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Sign up", :controller =>"users", :action => "new" %> or
+          <%= link_to "log in", :controller =>"user_sessions", :action => "new" %>.
+        <% end %>
+
+<%- model_class = @user.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @user.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
+  <dd><%= @user.username %></dd>
+  </dl>
+
+<div class="form-actions">
+  <%= link_to 'Edit', :controller =>"users", :action => "edit" %>
+  
+</div>
+
+

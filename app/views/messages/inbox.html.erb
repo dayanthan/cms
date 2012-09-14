@@ -1,0 +1,19 @@
+<% if !@usermessages.blank?%>
+<% @usermessages.each do |us| %>
+					
+		 				<div class="select_texttime"><%=us.user.username%></div>
+		 				
+		 				<div class="select_texttime"><span><a href="/users/messagedetails/<%=us.id%>" title="Click to see details" style="cursor:pointer;text-decoration:none;"><%=us.subject%></a></span></div>
+		 				
+		 				<div class="select_texttime"><%= us.created_at.strftime("%d/%m/%Y %I:%M %p")%></div>
+		 				
+		 				<div style="width: 20px;padding:10px 0px 5px 10px;" class="textboxfast">
+							<a style="cursor:pointer;" onclick="removeMessage('<%=us.id%>');" title="Click to Remove message"><img src="/images/delete.png"></a>
+						</div>
+			     </div>
+				<% end %>
+			<% else %>
+			     <div class="messase" style="padding-top: 10px;color:#F72A2A;padding-left:200px;" >
+				No Record Available!!
+			     </div>
+			<% end %>

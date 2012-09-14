@@ -1,0 +1,63 @@
+
+	
+   <div>
+  <% unless flash.blank? %>
+     <div id="messages" style="width: 613px;">
+	<ul class="messages">
+		<li class="success-msg">
+			<ul>
+				<li><%= notice %></li>
+			</ul>
+		</li>
+	</ul>
+   </div>
+<% end %>
+
+       
+	<div> Message Inbox</div>
+       		  <div >From</div>
+				  <div >Subject</div>
+				  <div >Date</div>
+  			
+  			<% if !@usermessages.blank?%>
+				<% @usermessages.each do |us| %>
+					<a href="/users/view/<%=us.user.user_id%>"  title="Click to view details">
+								<% if !us.user.photo_file_name.blank? %>
+									<%= image_tag us.user.photo.url(:small),:style=>"width:60px;height:60px;" %>
+								<% else %>
+									<img width="60" height="60" src="/images/nophoto.png">
+								<% end %>
+							</a>
+						</div>
+
+		 				<div ><%=us.user.username%></div>
+		 				<div ><span><a href="/users/messagedetails/<%=us.id%>" title="Click to see details" style="cursor:pointer;text-decoration:none;"><%=us.subject%></a></span></div>
+		 				<div ><%= us.created_at.strftime("%d/%m/%Y %I:%M %p")%></div>
+		 				<div style="width: 20px;padding:10px 0px 5px 10px;" >
+							<a style="cursor:pointer;" onclick="removeMessage('<%=us.id%>');" title="Click to Remove message"><img src="/images/delete.png"></a>
+						</div>
+					</div>
+				<% end %>
+			   <% else %>
+			     <div class="messase" style="padding-top: 10px;color:#F72A2A;padding-left:200px;" >
+				No Record Available!!
+			     </div>
+			<% end %>
+                        
+        		<div class="messase" style="border-top: 2px solid rgb(223, 223, 223); margin-top: 5px;">
+            			
+          		</div>
+        	
+   
+   <!--inner right close-->
+   
+  
+   <!--inner close-->
+  <!--Gamesdiv start-->
+
+
+</div>
+</form>
+
+
+

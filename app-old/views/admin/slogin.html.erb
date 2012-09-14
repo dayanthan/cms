@@ -1,0 +1,19 @@
+
+<%=flash[:notice]%>
+<div class="login-form">
+<legend>Please Log In</legend>
+<% form_tag do %>
+<p>
+<label for="name">User Name:</label>
+<%= text_field_tag :name, params[:name] %>
+</p>
+<p>
+<label for="password">Password:&nbsp;&nbsp;</label>
+<%= password_field_tag :password, params[:password] %>
+</p>
+
+<p>
+<%= submit_tag "Login" %>
+</p>
+<% end %>
+</div>

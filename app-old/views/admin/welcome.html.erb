@@ -1,0 +1,57 @@
+<% if !current_user.nil? %>   
+          Welcome <strong><%= current_user.username %>!</strong>           
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Sign up", :controller =>"users", :action => "new" %> or
+          <%= link_to "log in", :controller =>"user_sessions", :action => "new" %>.
+        <% end %>
+<%- model_class = @user.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+</div>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :username, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :username, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Photo, :class => 'control-label' %>
+    <div class="controls">
+      
+      <%= f.file_field :photo, :class => 'file_field' %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% if !@user.photo_file_name.blank? %>
+          <%= image_tag @user.photo(:small),:style=>"width:69px;height:69px;" %>
+        <% else %>
+          <img width="69" height="69" src="/images/nophoto.png">
+        <% end %>
+    </div>
+  </div>
+ <div class="form-actions">
+  <%= f.submit nil, :class => 'btn btn-primary', :controller =>"admin", :action => "show" %>
+   <%= link_to 'Back', :controller =>"admin", :action => "show" %>
+
+  </div>
+<% end %>
+

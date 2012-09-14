@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @developer.name %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @developer.role %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%= @developer.designation %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%= @developer.manager %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_developer_path(@developer) %> |
+<%= link_to 'Back', developers_path %>

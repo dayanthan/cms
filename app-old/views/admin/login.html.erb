@@ -1,0 +1,37 @@
+
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+
+   <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+</div>
+
+<p style="font-size:20px; text-align:center;"><b>AdminLogin</b></p>
+
+<div style="margin:auto; width:400px;font-size:14px; border:1px solid #000;padding:20px 0px 10px 0px;">
+
+
+<div style="text-align:center;">
+<legend>Please Log In</legend>
+<%= form_tag do %>
+<p>
+<label for="name">User Name:</label>
+<%= text_field_tag :name, params[:name] %>
+</p>
+<p>
+<label for="password">Password:&nbsp;&nbsp;</label>
+<%= password_field_tag :password, params[:password] %>
+</p>
+
+<p>
+<%= submit_tag "Login" %>
+<input type="reset" value="Reset" />
+</p>
+<% end %>
+</div>
+</div>
+
+

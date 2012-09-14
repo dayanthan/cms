@@ -1,0 +1,156 @@
+ 
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+
+   <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+</div>
+
+<p style="font-size:20px; text-align:center;"><b>Register</b></p>
+
+<div style="margin:auto; width:400px;font-size:14px; border:2px solid #000;padding:20px 0px 10px 0px;">
+
+ <%= form_for @user,:name=>"user",:url=> {:action =>"create"},:html =>{:id =>'frmuser', :multipart => true} do |f| %>
+ 			
+ 
+   <p style="text-align:center;">
+      <%= f.label :username %><br/>
+      <%= f.text_field :username,:class=>"validate[required]"%>
+   </p>
+   
+   <p style="text-align:center;">
+    <%= f.label :email %><br />					      
+    <%= f.text_field :email,:class=>"validate[required]",:onchange =>"checkemaildata(this.value);"%>
+    
+   </p>
+   
+   <p style="text-align:center;">
+     <%= f.label :password %><br />
+     <%= f.password_field :password,:class =>"validate[required]",:onchange=>"checkpasswordlength(this.value);" %>
+   </p>
+  
+   <p style="text-align:center;">
+     <%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation,:class =>"validate[required,equals[user_password]]" %>
+   </p>
+   <div class="control-group">
+    <%= f.label :user_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :user_type, :class => 'check_box' %>
+    </div>
+  </div>
+   <div class="control-group">
+    <%= f.label :is_active, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_active, :class => 'check_box' %>
+    </div>
+
+    <p style="text-align:center;">
+       <%= f.submit "Submit"%>
+       <input type="reset" value="Reset" />
+    </p>
+ 
+<% end %>
+	
+<p style="text-align:center;">Already you have an account?</br>
+<%= link_to 'Click here', :controller =>"user_sessions", :action =>"new" %> to login!</p>
+
+</div>
+
+ @roles = @user.roles.find(name: params[:name])
+
+
+
+ <!-- For validation for sign up start -->
+ <script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#frm_login").validationEngine();
+      });
+    </script>
+<%= form_for @user,:html => { :class => 'form-horizontal',:id =>'frm_login',:muitipart => true} do |f| %>
+   <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field',:class =>"input validate[required]" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :username, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :username, :class => 'text_field',:class =>"input validate[required]" %>
+    </div>
+  </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'text_field',:class =>"input validate[required]" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'text_field' ,:class =>"input validate[required]"%>
+    </div>
+  </div>
+ 
+ <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+     <input type="reset" value="Reset" />
+  </div>
+<% end %>
+<!-- end -->
+
+<!-- login validations start -->
+<script type="text/javascript">
+        jQuery.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#frm_login").validationEngine();
+      });
+    </script>
+     <!--Form Start  -->
+
+<div style="padding:0px 0px 10px 0px ;font-size:15px; text-align:center;">
+   <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+    <% end %>
+  <% if flash[:alert] %>
+    <p class="flash-error;font-size:55px;"><%= flash[:alert] %></p>
+  <% end %>
+</div>
+
+<p style="font-size:20px; text-align:center;"><b>Login</b></p>
+<div style="margin:auto; width:400px;font-size:14px; border:1px solid #000;padding:20px 0px 10px 0px;">
+
+<%= form_for @user_session, :action => "create" ,:html =>{:id =>'frm_login', :muitipart => true} do |f| %>
+  <div style="text-align:center;">
+
+  <%#= f.error_messages%>
+   <p style="text-align:center;">
+      <%= f.label :email %><br/>
+      <%= f.text_field :email, :class =>"input validate[required]"%>
+   </p>
+
+   <p style="text-align:center;">
+      <%= f.label :password %><br/>
+      <%= f.password_field :password ,:class =>"input validate[required]"%>
+   </p>
+   <p style="text-align:center;">
+       <%= f.submit "Submit"%>
+       <input type="reset" value="Reset" />
+    </p>
+</div>
+  <% end %>
+
+
+<p style="text-align:center;">You need an account?</br>
+<%= link_to 'Click here', :controller =>"users", :action =>"new" %> </p>
+
+  </div>
+
+  </div>
+<!-- end -->

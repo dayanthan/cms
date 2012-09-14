@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @department.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @department.email %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @department.role %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%= @department.designation %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%= @department.manager %>
+</p>
+
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>
