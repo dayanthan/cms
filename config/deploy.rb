@@ -3,11 +3,6 @@ require 'bundler/capistrano'
 set :application, "cms.rubynewauth.com"
 set :repository,  "git@github.com:dayanthan/cms.git"
 
-set :user, 'dayanthan'
-set :domain, 'cms.rubynewauth.com'
-set :applicationdir, "appdir"
-
-
 
 set :scm, :git
 
@@ -56,10 +51,3 @@ end
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-
-# task :staging do
-#   set :rails_env, 'staging'
-#   role :app, "rubynewauth.com"
-#   role :web, "rubynewauth.com"
-#   role :db,  "rubynewauth.com", :primary => true
-# end
