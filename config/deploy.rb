@@ -17,9 +17,9 @@ set :git_shallow_clone, 1
 set :scm_verbose, true
 
 # roles (servers)
-role :web, cms.rubynewauth.com
-role :app, cms.rubynewauth.com
-role :db,  cms.rubynewauth.com, :primary => true
+role :web, rubynewauth.com
+role :app, rubynewauth.com
+role :db,  rubynewauth.com, :primary => true
 
 
 # deploy config
