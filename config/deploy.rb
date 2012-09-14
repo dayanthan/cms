@@ -26,11 +26,9 @@ role :db,  cms.rubynewauth.com, :primary => true
 set :deploy_to, applicationdir
 set :deploy_via, :export
 
-
-# additional settings
-default_run_options[:pty] = true  # Forgo errors when deploying from windows
-#ssh_options[:keys] = %w(/home/user/.ssh/id_rsa)            # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
- 
+default_run_options[:pty] = true
+default_run_options[:shell] = false
+# 
 
 # Passenger
 namespace :deploy do
