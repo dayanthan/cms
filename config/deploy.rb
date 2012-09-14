@@ -42,6 +42,8 @@ end
   end
 end
 
+after :deploy, "gems:install"
+after "gems:install", "deploy:migrate"
 
 #set :scm, :subversion
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
