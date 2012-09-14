@@ -1,18 +1,21 @@
 require 'bundler/capistrano'
-
-set :application, "rubynewauth.com"
+#set :application, "testapp.charlesmaxwood.com"
+set :application, "cms.rubynewauth.com"
 set :repository,  "git@github.com:dayanthan/cms.git"
 
 
-set :scm, 'git'
+set :scm, :git
+
 
 #set :scm, :subversion
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :user, 'deploy'
+set :user, "root"
+##set :user, 'deploy'
 set :use_sudo, false
 set :deploy_to, "/var/www/#{application}"
-set :deploy_via, :remote_cache
+##set :deploy_via, :remote_cache
+set :deploy_to, "/var/www/cms"
 
 role :web, "rubynewauth.com"                          # Your HTTP server, Apache/etc
 role :app, "rubynewauth.com"                          # This may be the same as your `Web` server
@@ -29,6 +32,10 @@ role :db,  "rubynewauth.com", :primary => true # This is where Rails migrations 
 
 after "deploy" "deploy:bundle_gems"
 after "deploy:bundle_gems", "deploy:restart"
+
+ # task :install do
+ #    run "cd #{deploy_to}/current && RAILS_ENV=production rake gems:install"
+ #  end
 
 namespace :deploy do
 task :bundle_gems do
