@@ -27,10 +27,7 @@ set :deploy_to, applicationdir
 set :deploy_via, :export
 
 
-# additional settings
-default_run_options[:pty] = true 
-#ssh_options[:keys] = %w(/home/user/.ssh/id_rsa)            # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
- 
+
 
 # Passenger
 namespace :deploy do
