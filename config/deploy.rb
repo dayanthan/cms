@@ -16,6 +16,7 @@ set :use_sudo, false
 ##set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/cms"
+set :repository_cache, "cached_copy"
 
 role :web, "rubynewauth.com"                          # Your HTTP server, Apache/etc
 role :app, "rubynewauth.com"                          # This may be the same as your `Web` server
