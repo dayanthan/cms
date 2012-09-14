@@ -4,8 +4,9 @@ require 'bundler/capistrano'
 # set :application, "cms.rubynewauth.com"
 # set :repository,  "git@github.com:dayanthan/cms.git"
 
+
 set :user, 'dayanthan'
-set :domain, 'cms.rubynewauth.com'
+set :domain, 'cms.dayanthan.com'
 set :applicationdir, "appdir"
 
 set :scm, 'git'
